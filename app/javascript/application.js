@@ -46,7 +46,9 @@ window.updateStockLevel = function (stock_level) {
         },
         body: JSON.stringify({ stock_level: stock_level })
     }).then(function (response) {
-        if (!response.ok) {
+        if (response.redirected) {
+            window.location.href = response.url;
+        } else if (!response.ok) {
             console.log('ERROR -> PUT', url, { stock_level: stock_level }, response);
         }
     });

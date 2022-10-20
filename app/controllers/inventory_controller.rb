@@ -26,7 +26,8 @@ class InventoryController < ApplicationController
 
         if @stock.save
             respond_to do |format|
-                format.any { head 204 }
+                format.html { redirect_to inventory_path, notice: 'Stock level updated successfully.' }
+                format.json { head 204 }
             end
         else
             respond_to do |format|
