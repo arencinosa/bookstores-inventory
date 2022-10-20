@@ -1,13 +1,38 @@
 <div class="summary">
-    <div class="summary-entry books">
-        <span><%= @books_amount %></span><span> <%= 'book'.pluralize(@books_amount) %> registered</span>
+    <div class="summary-entry bookstores">
+        <span class="summary-entry-value"><%= @bookstores_amount %></span><span> <%= 'bookstore'.pluralize(@bookstores_amount) %> registered</span>
     </div>
 
-    <div class="summary-entry bookstores">
-        <span><%= @bookstores_amount %></span><span> <%= 'bookstore'.pluralize(@bookstores_amount) %> registered</span>
+    <div class="summary-entry books">
+        <span class="summary-entry-value"><%= @books_amount %></span><span> <%= 'book'.pluralize(@books_amount) %> registered</span>
     </div>
 
     <div class="summary-entry stock">
-        <span><%= @total_stock %></span><span> <%= 'book'.pluralize(@books_amount) %> in stock</span>
+        <span class="summary-entry-value"><%= @total_stock %></span><span> <%= 'book'.pluralize(@books_amount) %> in stock</span>
+    </div>
+</div>
+
+<div class="operations">
+    <div class="section bookstores">
+        <%= collection_select(:bookstore, :name, Bookstore.order(:name),
+            :id, :name,
+            { prompt: true },
+            onchange: 'validateOperationSections();'
+        )%>
+    </div>
+    <div class="section books">
+        <%= collection_select(:book, :name, Book.order(:name),
+            :id, :name,
+            { prompt: true },
+            onchange: 'validateOperationSections();'
+        )%>
+    </div>
+    <div class="section stock">
+        <input type="hidden" id="stock_level_url" value="<%= stock_level_path(:bookstore_id, :book_id) %>" />
+        <input id="stock_level" type="number"
+            class="hide"
+            min="0" value="0"
+            onchange="updateStockLevel(this.value);"
+        />
     </div>
 </div>
