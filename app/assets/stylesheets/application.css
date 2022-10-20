@@ -14,11 +14,18 @@
  *= require_self
  */
 
+body {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 nav {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     list-style-type: none;
     margin-bottom: 2em;
+    border-bottom: solid 1px gray;
 }
 
 nav li.menu-item {
@@ -62,4 +69,23 @@ nav li.menu-item.selected a {
 
 .collection * {
     display: inline;
+}
+
+.summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.summary-entry-value {
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.operations {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.hide {
+    display: none !important;
 }
