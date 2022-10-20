@@ -19,3 +19,9 @@ end
 ].each do |n|
     Bookstore.create!(name: n)
 end
+
+Bookstore.all.each do |bookstore|
+    Book.all.sample(rand(2..Book.count)).each do |book|
+        Stock.create!(book: book, bookstore: bookstore, stock_level: rand(20))
+    end
+end
