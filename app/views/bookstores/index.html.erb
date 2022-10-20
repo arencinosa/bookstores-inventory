@@ -1,6 +1,6 @@
-<label>Create a new book:</label>
+<label>Create a new bookstore:</label>
 <div class="create-collection-entry">
-    <%= simple_form_for Book.new, url: books_path, html: { class: "book-form" } do |f| %>
+    <%= simple_form_for Bookstore.new, url: bookstores_path, html: { class: "bookstore-form" } do |f| %>
         <div class="inline">
             <%= f.input :name, label: false, input_html: { autofocus: true } %>
             <%= render 'partials/add_button' %>
@@ -8,16 +8,16 @@
     <% end %>
 </div>
 
-<label>Books:</label>
+<label>Bookstores:</label>
 <div class="collection">
-    <% @books.each do |b| %>
+    <% @bookstores.each do |bs| %>
         <div class="collection-entry">
-            <div class="collection-entry-property book-name">
-                <%= b.name %>
+            <div class="collection-entry-property bookstore-name">
+                <%= bs.name %>
             </div>
 
             <div class="collection-entry-actions">
-                <%= button_to "x" , book_path(b), method: :delete %>
+                <%= button_to "x" , bookstore_path(bs), method: :delete %>
             </div>
         </div>
     <% end %>

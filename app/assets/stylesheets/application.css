@@ -43,18 +43,23 @@ nav li.menu-item.selected a {
     color: rgb(16, 16, 43);
 }
 
-.create-book * {
+.create-collection-entry * {
     display: inline;
 }
 
-.create-book {
+.create-collection-entry {
     margin-bottom: 2em;
 }
 
-.book {
+.collection-entry {
     margin-left: 1em;
 }
 
-.book * {
+.collection {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.collection * {
     display: inline;
 }

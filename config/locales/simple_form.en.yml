@@ -32,6 +32,10 @@ en:
     placeholders:
       book:
         name: Type the book name here
+      bookstore:
+        name: Type the bookstore name here
     labels:
       book:
         name: "Book name"
+      bookstore:
+        name: "Bookstore name"

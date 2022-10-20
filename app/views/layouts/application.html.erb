@@ -13,7 +13,7 @@
   <body>
     <nav>
       <li class="menu-item <%= 'selected' if @section == 'bookstores' %>">
-        <%= link_to 'Bookstores', '#' %>
+        <%= link_to 'Bookstores', bookstores_path %>
       </li>
       <li class="menu-item <%= 'selected' if @section == 'books' %>">
         <%= link_to 'Books', books_path %>
