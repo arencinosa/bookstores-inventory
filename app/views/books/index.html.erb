@@ -1,3 +1,12 @@
+<div class="create-book">
+    <%= simple_form_for Book.new, url: books_path, html: { class: "book-form" } do |f| %>
+        <div class="inline">
+            <%= f.input :name, label: false, input_html: { autofocus: true } %>
+            <%= render 'partials/add_button' %>
+        </div>
+    <% end %>
+</div>
+
 <div class="books">
     <% @books.each do |b| %>
         <div class="book">
