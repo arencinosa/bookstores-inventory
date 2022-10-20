@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_20_011110) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_20_020505) do
   create_table "books", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -23,4 +23,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_011110) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "stocks", force: :cascade do |t|
+    t.integer "bookstore_id"
+    t.integer "book_id"
+    t.integer "stock_level", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_stocks_on_book_id"
+    t.index ["bookstore_id"], name: "index_stocks_on_bookstore_id"
+  end
+
+  add_foreign_key "stocks", "books"
+  add_foreign_key "stocks", "bookstores"
 end

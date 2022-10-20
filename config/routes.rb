@@ -6,4 +6,8 @@ Rails.application.routes.draw do
 
   resources :books
   resources :bookstores
+
+  root 'inventory#index', as: 'inventory'
+
+  get 'inventory', :action => :index, :controller => :inventory
 end
