@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+    before_action :load_book, only: [:destroy]
 
     def index
         @books = Book.all
@@ -23,8 +24,20 @@ class BooksController < ApplicationController
         end
     end
 
+    def destroy
+        @book.destroy
+        respond_to do |format|
+            format.html { redirect_to books_path, notice: 'Book deleted successfully.' }
+            format.json { render status: 204 }
+        end
+    end
+
 
     private
+
+    def load_book
+        @book = Book.find(params[:id])
+    end
 
     def book_params
         ( params.has_key?(:book) ? params.require(:book) : params ).permit(:name)
