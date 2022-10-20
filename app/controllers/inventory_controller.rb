@@ -5,10 +5,19 @@ class InventoryController < ApplicationController
         @books_amount = Book.count
         @bookstores_amount = Bookstore.count
         @total_stock = Stock.sum(:stock_level)
+        @summary = get_summary_by_bookstore
 
         respond_to do |format|
             format.html
-            format.json { render json: { books: @books_amount, bookstores: @bookstores_amount, stock: @total_stock } }
+            format.json { render json: { books: @books_amount, bookstores: @bookstores_amount, stock: @total_stock, summary: @summary } }
+        end
+    end
+
+    def by_bookstores
+        @summary = get_summary_by_bookstore
+
+        respond_to do |format|
+            format.any { render json: @summary }
         end
     end
 
@@ -37,6 +46,38 @@ class InventoryController < ApplicationController
     end
 
     private
+
+    def get_summary_by_bookstore
+        summary = []
+        Bookstore.all.each do |bookstore|
+            entry = {
+                bookstore_id: bookstore.id,
+                bookstore_name: bookstore.name,
+                books: {
+                    in_stock: [],
+                    out_of_stock: []
+                }
+            }
+            Book.all.each do |book|
+                stock = Stock.find_by(book_id: book.id, bookstore_id: bookstore)
+                if stock.nil? || stock.stock_level == 0
+                    entry[:books][:out_of_stock] << {
+                        book_id: book.id,
+                        book_name: book.name
+                    }
+                else
+                    entry[:books][:in_stock] << {
+                        book_id: book.id,
+                        book_name: book.name,
+                        stock_level: stock.stock_level
+                    }
+                end
+            end
+            summary << entry
+        end
+
+        return summary
+    end
 
     def set_section
         @section = 'inventory'

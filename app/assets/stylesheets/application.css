@@ -84,8 +84,28 @@ nav li.menu-item.selected a {
 .operations {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 2em;
 }
 
 .hide {
     display: none !important;
+}
+
+.summary-entry.bookstore {
+    margin-bottom: 2em;
+}
+
+.summary-entry-property {
+    margin-left: 1em;
+}
+
+.summary-entry-property.bookstore-name {
+    margin-left: 0px;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.danger {
+    color: rgb(151, 8, 8);
+    background-color: yellow;
 }

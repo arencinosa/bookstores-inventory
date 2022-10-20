@@ -36,3 +36,22 @@
         />
     </div>
 </div>
+
+<div class="summary bookstores">
+    <% @summary.each do |s| %>
+        <div class="summary-entry bookstore">
+            <div class="summary-entry-property bookstore-name">
+                <span><%= s[:bookstore_name] %></span>
+            </div>
+            <div class="summary-entry-property bookstore-in-stock">
+                <span><%= s[:books][:in_stock].size %></span><span> <%= 'book'.pluralize(s[:books][:in_stock].size) %> in stock</span>
+            </div>
+            <div class="summary-entry-property bookstore-out-of-stock">
+                <%
+                    out_of_stock = s[:books][:out_of_stock].size
+                %>
+                <span class="<%= 'danger' if out_of_stock > 0 %>"><%= out_of_stock %></span><span> <%= 'book'.pluralize(out_of_stock) %> out of stock</span>
+            </div>
+        </div>
+    <% end %>
+</div>
