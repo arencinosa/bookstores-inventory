@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BookstoresInventory</title>
+    <title>Bookstores Inventory</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,18 @@
   </head>
 
   <body>
+    <nav>
+      <li class="menu-item <%= 'selected' if @section == 'bookstores' %>">
+        <%= link_to 'Bookstores', '#' %>
+      </li>
+      <li class="menu-item <%= 'selected' if @section == 'books' %>">
+        <%= link_to 'Books', books_path %>
+      </li>
+      <li class="menu-item <%= 'selected' if @section == 'inventory' %>">
+        <%= link_to 'Inventory', '#' %>
+      </li>
+    </nav>
+
     <%= yield %>
   </body>
 </html>

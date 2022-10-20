@@ -1,3 +1,4 @@
+<label>Create a new book:</label>
 <div class="create-book">
     <%= simple_form_for Book.new, url: books_path, html: { class: "book-form" } do |f| %>
         <div class="inline">
@@ -7,6 +8,7 @@
     <% end %>
 </div>
 
+<label>Books:</label>
 <div class="books">
     <% @books.each do |b| %>
         <div class="book">

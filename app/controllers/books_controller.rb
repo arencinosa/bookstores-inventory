@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+    before_action :set_section
     before_action :load_book, only: [:destroy]
 
     def index
@@ -34,6 +35,10 @@ class BooksController < ApplicationController
 
 
     private
+
+    def set_section
+        @section = 'books'
+    end
 
     def load_book
         @book = Book.find(params[:id])

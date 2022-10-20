@@ -13,3 +13,48 @@
  *= require_tree .
  *= require_self
  */
+
+nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    list-style-type: none;
+    margin-bottom: 2em;
+}
+
+nav li.menu-item {
+    font-size: 1.8em;
+}
+
+nav li.menu-item.selected {
+    font-size: 2.8em;
+}
+
+nav li.menu-item a {
+    text-decoration: none;
+    color: rgb(2, 2, 168);
+}
+
+nav li.menu-item a:visited {
+    text-decoration: none;
+    color: rgb(2, 2, 168);
+}
+
+nav li.menu-item.selected a {
+    color: rgb(16, 16, 43);
+}
+
+.create-book * {
+    display: inline;
+}
+
+.create-book {
+    margin-bottom: 2em;
+}
+
+.book {
+    margin-left: 1em;
+}
+
+.book * {
+    display: inline;
+}
