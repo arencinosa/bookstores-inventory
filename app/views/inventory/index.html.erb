@@ -46,6 +46,12 @@
             <div class="summary-entry-property bookstore-in-stock">
                 <span><%= s[:books][:in_stock].size %></span><span> <%= 'book'.pluralize(s[:books][:in_stock].size) %> in stock</span>
             </div>
+            <div class="summary-entry-property bookstore-total-stock">
+                <%
+                    total_stock = s[:books][:in_stock].map {|x| x[:stock_level] }.sum()
+                %>
+                <span><%= total_stock %></span><span> <%= 'copy'.pluralize(total_stock) %> in total</span>
+            </div>
             <div class="summary-entry-property bookstore-out-of-stock">
                 <%
                     out_of_stock = s[:books][:out_of_stock].size
